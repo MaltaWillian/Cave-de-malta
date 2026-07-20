@@ -1,25 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-<title>Cave de Malta</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cave de Malta 🍷</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f1ea;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 420px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+h1 {
+    text-align: center;
+    color: #6b1e2b;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #6b1e2b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#foto {
+    margin-bottom: 15px;
+}
+
+.vinho {
+    margin-top: 20px;
+    padding: 15px;
+    background: #eee;
+    border-radius: 10px;
+}
+</style>
+
 </head>
 
 <body>
 
-<h1>Cave de Malta 🍷</h1>
+<div class="container">
 
-<h2>Cadastro de Vinhos</h2>
+<h1>🍷 Cave de Malta</h1>
 
-<input placeholder="Nome do vinho"><br><br>
+<label>Nome do vinho</label>
+<input id="nome" placeholder="Ex: Malbec Reserva">
 
-<input placeholder="Vinícola"><br><br>
+<label>Vinícola</label>
+<input id="vinicola" placeholder="Nome da vinícola">
 
-<input placeholder="Safra"><br><br>
+<label>Safra</label>
+<input id="safra" placeholder="Ano">
 
-<textarea placeholder="Observações da degustação"></textarea><br><br>
+<label>Foto do rótulo</label>
+<input id="foto" type="file" accept="image/*">
 
-<button>Salvar vinho</button>
+<label>Notas de degustação</label>
+<textarea id="nota" placeholder="Aromas, paladar, harmonização..."></textarea>
+
+<button onclick="salvar()">Salvar vinho</button>
+
+<div id="lista"></div>
+
+</div>
+
+<script>
+
+function salvar(){
+
+let vinho = {
+nome: document.getElementById("nome").value,
+vinicola: document.getElementById("vinicola").value,
+safra: document.getElementById("safra").value,
+nota: document.getElementById("nota").value
+};
+
+let vinhos = JSON.parse(localStorage.getItem("vinhos")) || [];
+
+vinhos.push(vinho);
+
+localStorage.setItem("vinhos", JSON.stringify(vinhos));
+
+alert("Vinho salvo com sucesso! 🍷");
+
+mostrar();
+
+}
+
+function mostrar(){
+
+let lista = document.getElementById("lista");
+lista.innerHTML="";
+
+let vinhos = JSON.parse(localStorage.getItem("vinhos")) || [];
+
+vinhos.forEach(v => {
+
+lista.innerHTML += `
+<div class="vinho">
+<b>${v.nome}</b><br>
+${v.vinicola}<br>
+Safra: ${v.safra}<br><br>
+${v.nota}
+</div>`;
+
+});
+
+}
+
+mostrar();
+
+</script>
 
 </body>
 </html>
