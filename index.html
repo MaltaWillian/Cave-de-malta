@@ -7,59 +7,88 @@
 <title>Cave de Malta 🍷</title>
 
 <style>
+
 body {
+    margin:0;
+    padding:20px;
     font-family: Arial, sans-serif;
-    background: #f5f1ea;
-    margin: 0;
-    padding: 20px;
+    background:#efe7dc;
 }
 
 .container {
-    max-width: 420px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
+    max-width:450px;
+    margin:auto;
+    background:#fff;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
 }
 
-h1 {
-    text-align: center;
-    color: #6b1e2b;
+.logo {
+    text-align:center;
+    color:#6b1e2b;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.subtitulo {
+    text-align:center;
+    color:#555;
+    margin-bottom:20px;
 }
 
 label {
-    font-weight: bold;
+    font-weight:bold;
+    color:#333;
 }
 
 input, textarea, select {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    margin-bottom:15px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+}
+
+textarea {
+    height:90px;
 }
 
 button {
-    width: 100%;
-    padding: 12px;
-    background: #6b1e2b;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
+    width:100%;
+    padding:14px;
+    background:#6b1e2b;
+    color:white;
+    border:0;
+    border-radius:12px;
+    font-size:17px;
 }
 
-#foto {
-    margin-bottom: 15px;
+.card {
+    margin-top:20px;
+    background:#f8f3ec;
+    padding:15px;
+    border-radius:15px;
 }
 
-.vinho {
-    margin-top: 20px;
-    padding: 15px;
-    background: #eee;
-    border-radius: 10px;
+.card img {
+    width:100%;
+    border-radius:10px;
 }
+
+.nota {
+    font-size:22px;
+    color:#6b1e2b;
+    font-weight:bold;
+}
+
+.excluir {
+    background:#333;
+    margin-top:10px;
+}
+
 </style>
 
 </head>
@@ -68,76 +97,214 @@ button {
 
 <div class="container">
 
-<h1>🍷 Cave de Malta</h1>
+<div class="logo">
+🍷 Cave de Malta
+</div>
+
+<div class="subtitulo">
+Minha adega digital
+</div>
+
 
 <label>Nome do vinho</label>
-<input id="nome" placeholder="Ex: Malbec Reserva">
+<input id="nome" placeholder="Ex: Cabernet Sauvignon Reserva">
+
 
 <label>Vinícola</label>
-<input id="vinicola" placeholder="Nome da vinícola">
+<input id="vinicola" placeholder="Ex: Vinícola X">
+
 
 <label>Safra</label>
-<input id="safra" placeholder="Ano">
+<input id="safra" placeholder="2020">
+
+
+<label>País / Região</label>
+<input id="regiao" placeholder="Brasil - Serra Gaúcha">
+
+
+<label>Valor pago</label>
+<input id="valor" placeholder="R$">
+
+
+<label>Local na adega</label>
+<input id="local" placeholder="Prateleira 1">
+
 
 <label>Foto do rótulo</label>
 <input id="foto" type="file" accept="image/*">
 
-<label>Notas de degustação</label>
-<textarea id="nota" placeholder="Aromas, paladar, harmonização..."></textarea>
 
-<button onclick="salvar()">Salvar vinho</button>
+<label>Notas de degustação</label>
+<textarea id="nota" placeholder="Aromas, sabores, final..."></textarea>
+<label>Nota do vinho (0 a 100)</label>
+<input id="avaliacao" type="number" min="0" max="100" placeholder="Ex: 92">
+
+
+<label>Harmonização</label>
+<textarea id="harmonizacao" placeholder="Carnes, massas, queijos..."></textarea>
+
+
+<button onclick="salvarVinho()">
+Salvar vinho 🍷
+</button>
+
 
 <div id="lista"></div>
 
 </div>
 
+
 <script>
 
-function salvar(){
+let imagemBase64 = "";
 
-let vinho = {
-nome: document.getElementById("nome").value,
-vinicola: document.getElementById("vinicola").value,
-safra: document.getElementById("safra").value,
-nota: document.getElementById("nota").value
-};
+document.getElementById("foto").addEventListener("change", function(e){
 
-let vinhos = JSON.parse(localStorage.getItem("vinhos")) || [];
+let arquivo = e.target.files[0];
 
-vinhos.push(vinho);
+if(arquivo){
 
-localStorage.setItem("vinhos", JSON.stringify(vinhos));
+let leitor = new FileReader();
 
-alert("Vinho salvo com sucesso! 🍷");
+leitor.onload=function(){
 
-mostrar();
+imagemBase64 = leitor.result;
 
 }
 
-function mostrar(){
+leitor.readAsDataURL(arquivo);
 
-let lista = document.getElementById("lista");
-lista.innerHTML="";
-
-let vinhos = JSON.parse(localStorage.getItem("vinhos")) || [];
-
-vinhos.forEach(v => {
-
-lista.innerHTML += `
-<div class="vinho">
-<b>${v.nome}</b><br>
-${v.vinicola}<br>
-Safra: ${v.safra}<br><br>
-${v.nota}
-</div>`;
+}
 
 });
 
+
+function salvarVinho(){
+
+let vinho = {
+
+nome: document.getElementById("nome").value,
+
+vinicola: document.getElementById("vinicola").value,
+
+safra: document.getElementById("safra").value,
+
+regiao: document.getElementById("regiao").value,
+
+valor: document.getElementById("valor").value,
+
+local: document.getElementById("local").value,
+
+nota: document.getElementById("nota").value,
+
+avaliacao: document.getElementById("avaliacao").value,
+
+harmonizacao: document.getElementById("harmonizacao").value,
+
+foto: imagemBase64
+
+};
+
+
+let vinhos = JSON.parse(localStorage.getItem("caveMalta")) || [];
+
+
+vinhos.push(vinho);
+
+
+localStorage.setItem("caveMalta", JSON.stringify(vinhos));
+
+
+alert("Vinho guardado na Cave de Malta 🍷");
+
+
+mostrarVinhos();
+
+
 }
 
-mostrar();
+
+
+function mostrarVinhos(){
+
+
+let lista=document.getElementById("lista");
+
+lista.innerHTML="";
+
+
+let vinhos=JSON.parse(localStorage.getItem("caveMalta")) || [];
+
+
+vinhos.forEach((v,index)=>{
+
+
+lista.innerHTML += `
+
+<div class="card">
+
+
+${v.foto ? `<img src="${v.foto}">` : ""}
+
+
+<h3>${v.nome}</h3>
+
+
+<p><b>Vinícola:</b> ${v.vinicola}</p>
+
+<p><b>Safra:</b> ${v.safra}</p>
+
+<p><b>Região:</b> ${v.regiao}</p>
+
+<p><b>Local:</b> ${v.local}</p>
+
+<p>${v.nota}</p>
+
+<div class="nota">
+⭐ ${v.avaliacao}/100
+</div>
+
+
+<p><b>Harmonização:</b><br>${v.harmonizacao}</p>
+
+
+<button class="excluir" onclick="excluirVinho(${index})">
+Excluir
+</button>
+
+
+</div>
+
+`;
+
+});
+
+
+}
+
+
+
+function excluirVinho(index){
+
+let vinhos=JSON.parse(localStorage.getItem("caveMalta")) || [];
+
+
+vinhos.splice(index,1);
+
+
+localStorage.setItem("caveMalta", JSON.stringify(vinhos));
+
+
+mostrarVinhos();
+
+}
+
+
+mostrarVinhos();
+
 
 </script>
+
 
 </body>
 </html>
