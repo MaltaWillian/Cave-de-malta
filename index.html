@@ -2,111 +2,112 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=
- <title>Cave de Malta 🍷</title>
-    <style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-body {
-    margin:0;
-    padding:20px;
-    font-family: Georgia, serif;
-    background:#120b0d;
-    color:#eee;
+<title>Cave de Malta 🍷</title>
+
+<style>
+
+body{
+margin:0;
+padding:20px;
+font-family:Georgia,serif;
+background:#120b0d;
+color:white;
 }
 
-.container {
-    max-width:460px;
-    margin:auto;
-    background:#1d1518;
-    padding:22px;
-    border-radius:25px;
-    box-shadow:0 0 25px rgba(212,175,55,.25);
+.container{
+max-width:460px;
+margin:auto;
+background:#1d1518;
+padding:22px;
+border-radius:25px;
+box-shadow:0 0 25px rgba(212,175,55,.25);
 }
 
-.logo {
-    text-align:center;
-    color:#d4af37;
-    font-size:34px;
-    font-weight:bold;
-    letter-spacing:1px;
+.logo{
+text-align:center;
+font-size:34px;
+font-weight:bold;
+color:#d4af37;
 }
 
-.frase {
-    text-align:center;
-    color:#c9b8a0;
-    margin-bottom:30px;
-    font-style:italic;
+.frase{
+text-align:center;
+color:#c9b8a0;
+margin-bottom:25px;
+font-style:italic;
 }
 
-h2 {
-    color:#d4af37;
-    border-bottom:1px solid #6b1e2b;
-    padding-bottom:8px;
+h2{
+color:#d4af37;
+border-bottom:1px solid #6b1e2b;
+padding-bottom:8px;
 }
 
-label {
-    color:#d4af37;
-    font-weight:bold;
+label{
+color:#d4af37;
+font-weight:bold;
 }
 
-input, select, textarea {
-    width:100%;
-    padding:13px;
-    margin:8px 0 16px;
-    border-radius:12px;
-    border:1px solid #6b1e2b;
-    background:#2a2023;
-    color:white;
-    box-sizing:border-box;
+input,select,textarea{
+width:100%;
+padding:13px;
+margin:8px 0 15px;
+border-radius:12px;
+border:1px solid #6b1e2b;
+background:#2a2023;
+color:white;
+box-sizing:border-box;
 }
 
-textarea {
-    height:90px;
+textarea{
+height:90px;
 }
 
-button {
-    width:100%;
-    padding:15px;
-    background:#6b1e2b;
-    color:#fff;
-    border:none;
-    border-radius:14px;
-    font-size:17px;
-    font-weight:bold;
+button{
+width:100%;
+padding:15px;
+background:#6b1e2b;
+color:white;
+border:0;
+border-radius:14px;
+font-size:17px;
+font-weight:bold;
+margin-top:10px;
 }
 
-.card {
-    background:#261b1f;
-    margin-top:25px;
-    padding:18px;
-    border-radius:18px;
-    border:1px solid #d4af37;
+.card{
+background:#261b1f;
+margin-top:25px;
+padding:18px;
+border-radius:18px;
+border:1px solid #d4af37;
 }
 
-.card img {
-    width:100%;
-    border-radius:12px;
+.card img{
+width:100%;
+border-radius:12px;
 }
 
-.nota {
-    font-size:28px;
-    color:#d4af37;
-    text-align:center;
-    margin:15px 0;
+.nota{
+font-size:28px;
+color:#d4af37;
+text-align:center;
 }
 
-.compartilhar {
-    background:#2d6a4f;
+.compartilhar{
+background:#2d6a4f;
 }
 
-.excluir {
-    background:#444;
+.excluir{
+background:#444;
 }
 
 </style>
+
 </head>
 
-    
 <body>
 
 <div class="container">
@@ -119,17 +120,13 @@ button {
 Minha adega digital e avaliação de vinhos
 </div>
 
-
 <h2>Cadastro do vinho</h2>
 
-
 <label>Nome do vinho</label>
-<input id="nome" placeholder="Ex: Malbec Reserva">
-
+<input id="nome">
 
 <label>Vinícola</label>
-<input id="vinicola" placeholder="Nome da vinícola">
-
+<input id="vinicola">
 
 <label>Tipo</label>
 <select id="tipo">
@@ -139,23 +136,19 @@ Minha adega digital e avaliação de vinhos
 <option>Espumante</option>
 </select>
 
-
 <label>Uva</label>
-<input id="uva" placeholder="Ex: Cabernet Sauvignon">
-
+<input id="uva">
 
 <label>Safra</label>
-<input id="safra" placeholder="Ano">
-
+<input id="safra">
 
 <label>País / Região</label>
-<input id="regiao" placeholder="Ex: Brasil - Serra Gaúcha">
-
+<input id="regiao">
 
 <label>Foto do rótulo</label>
 <input id="foto" type="file" accept="image/*">
 <label>Teor alcoólico</label>
-<input id="alcool" placeholder="Ex: 13,5%"> 
+<input id="alcool" placeholder="Ex: 13,5%">
 
 
 <label>Valor pago</label>
@@ -163,69 +156,61 @@ Minha adega digital e avaliação de vinhos
 
 
 <label>Quantidade de garrafas</label>
-<input id="quantidade" type="number" placeholder="Ex: 2">
+<input id="quantidade" type="number">
 
 
 <label>Local na adega</label>
 <input id="local" placeholder="Ex: Prateleira 1">
 
 
-<h2>Avaliação visual</h2>
+<h2>Avaliação Visual 👁</h2>
 
 <label>Cor</label>
 <input id="cor" placeholder="Ex: Rubi intenso">
 
-
-<label>Intensidade visual</label>
+<label>Intensidade</label>
 <input id="visual" placeholder="Ex: Brilhante">
 
 
 <h2>Aromas 👃</h2>
 
 <label>Frutas</label>
-<input id="frutas" placeholder="Ex: Frutas vermelhas">
-
+<input id="frutas">
 
 <label>Flores</label>
-<input id="flores" placeholder="Ex: Violetas">
-
+<input id="flores">
 
 <label>Especiarias</label>
-<input id="especiarias" placeholder="Ex: Pimenta, baunilha">
-
+<input id="especiarias">
 
 <label>Madeira</label>
-<input id="madeira" placeholder="Ex: Carvalho">
-
+<input id="madeira">
 
 <label>Minerais</label>
-<input id="minerais" placeholder="Ex: Pedras, grafite">
+<input id="minerais">
 
 
 <h2>Gustativo 👅</h2>
 
 <label>Corpo</label>
-<input id="corpo" placeholder="Ex: Médio">
-
+<input id="corpo">
 
 <label>Acidez</label>
-<input id="acidez" placeholder="Ex: Equilibrada">
-
+<input id="acidez">
 
 <label>Taninos</label>
-<input id="tanino" placeholder="Ex: Macios">
-
+<input id="tanino">
 
 <label>Final</label>
-<input id="final" placeholder="Ex: Longo e elegante">
+<input id="final">
 
 
 <label>Nota final (0 a 100)</label>
-<input id="notaFinal" type="number" min="0" max="100" placeholder="Ex: 92">
+<input id="notaFinal" type="number" min="0" max="100">
 
 
-<label>Harmonização</label>
-<textarea id="harmonizacao" placeholder="Carnes, massas, queijos..."></textarea>
+<label>Harmonização 🍽</label>
+<textarea id="harmonizacao"></textarea>
 
 
 <button onclick="salvarVinho()">
@@ -263,50 +248,51 @@ leitor.readAsDataURL(arquivo);
 
 function salvarVinho(){
 
-let vinho = {
+let vinho={
 
-nome: nome.value,
-vinicola: vinicola.value,
-tipo: tipo.value,
-uva: uva.value,
-safra: safra.value,
-regiao: regiao.value,
-alcool: alcool.value,
-valor: valor.value,
-quantidade: quantidade.value,
-local: local.value,
+nome:document.getElementById("nome").value,
+vinicola:document.getElementById("vinicola").value,
+tipo:document.getElementById("tipo").value,
+uva:document.getElementById("uva").value,
+safra:document.getElementById("safra").value,
+regiao:document.getElementById("regiao").value,
 
-foto: imagemBase64,
+alcool:document.getElementById("alcool").value,
+valor:document.getElementById("valor").value,
+quantidade:document.getElementById("quantidade").value,
+local:document.getElementById("local").value,
 
-cor: cor.value,
-visual: visual.value,
+foto:imagemBase64,
 
-frutas: frutas.value,
-flores: flores.value,
-especiarias: especiarias.value,
-madeira: madeira.value,
-minerais: minerais.value,
+cor:document.getElementById("cor").value,
+visual:document.getElementById("visual").value,
 
-corpo: corpo.value,
-acidez: acidez.value,
-tanino: tanino.value,
-final: final.value,
+frutas:document.getElementById("frutas").value,
+flores:document.getElementById("flores").value,
+especiarias:document.getElementById("especiarias").value,
+madeira:document.getElementById("madeira").value,
+minerais:document.getElementById("minerais").value,
 
-notaFinal: notaFinal.value,
-harmonizacao: harmonizacao.value
+corpo:document.getElementById("corpo").value,
+acidez:document.getElementById("acidez").value,
+tanino:document.getElementById("tanino").value,
+final:document.getElementById("final").value,
+
+notaFinal:document.getElementById("notaFinal").value,
+
+harmonizacao:document.getElementById("harmonizacao").value
 
 };
 
 
-let vinhos = JSON.parse(localStorage.getItem("CaveMalta")) || [];
+let vinhos=JSON.parse(localStorage.getItem("CaveMalta")) || [];
 
 vinhos.push(vinho);
 
-localStorage.setItem("CaveMalta", JSON.stringify(vinhos));
+localStorage.setItem("CaveMalta",JSON.stringify(vinhos));
 
 
-alert("Avaliação salva na Cave de Malta 🍷");
-
+alert("Vinho salvo na Cave de Malta 🍷");
 
 mostrarVinhos();
 
@@ -326,8 +312,7 @@ let vinhos=JSON.parse(localStorage.getItem("CaveMalta")) || [];
 
 vinhos.forEach((v,index)=>{
 
-
-lista.innerHTML += `
+lista.innerHTML +=`
 
 <div class="card">
 
@@ -337,26 +322,24 @@ ${v.foto ? `<img src="${v.foto}">` : ""}
 
 <p><b>Vinícola:</b> ${v.vinicola}</p>
 
-<p><b>Tipo:</b> ${v.tipo}</p>
-
-<p><b>Uva:</b> ${v.uva}</p>
+<p><b>${v.tipo}</b> | ${v.uva}</p>
 
 <p><b>Safra:</b> ${v.safra}</p>
 
-<p><b>Região:</b> ${v.regiao}</p>
-
+<p>${v.regiao}</p>
 
 <div class="nota">
 ⭐ ${v.notaFinal}/100
 </div>
 
-
-<p><b>Aromas:</b><br>
-${v.frutas} ${v.flores} ${v.especiarias} ${v.madeira} ${v.minerais}
+<p>
+<b>Aromas:</b><br>
+${v.frutas} ${v.flores} ${v.especiarias}
 </p>
 
 
-<p><b>Gustativo:</b><br>
+<p>
+<b>Paladar:</b><br>
 Corpo: ${v.corpo}<br>
 Acidez: ${v.acidez}<br>
 Taninos: ${v.tanino}<br>
@@ -364,13 +347,14 @@ Final: ${v.final}
 </p>
 
 
-<p><b>Harmonização:</b><br>
+<p>
+<b>Harmonização:</b><br>
 ${v.harmonizacao}
 </p>
 
 
 <p>
-<b>Avaliado por: Willian Malta</b>
+🍷 <b>Avaliado por: Willian Malta</b>
 </p>
 
 
@@ -379,7 +363,7 @@ Compartilhar ficha 📲
 </button>
 
 
-<button class="excluir" onclick="excluir(${index})">
+<button class="excluir" onclick="excluirVinho(${index})">
 Excluir
 </button>
 
@@ -401,12 +385,15 @@ let vinhos=JSON.parse(localStorage.getItem("CaveMalta")) || [];
 let v=vinhos[index];
 
 
-let texto = `🍷 Cave de Malta
+let texto=
+
+`🍷 Cave de Malta
 
 ${v.nome}
 Vinícola: ${v.vinicola}
 Safra: ${v.safra}
-Nota: ⭐ ${v.notaFinal}/100
+
+⭐ Nota: ${v.notaFinal}/100
 
 Aromas:
 ${v.frutas}, ${v.flores}, ${v.especiarias}
@@ -437,13 +424,13 @@ alert(texto);
 
 
 
-function excluir(index){
+function excluirVinho(index){
 
 let vinhos=JSON.parse(localStorage.getItem("CaveMalta")) || [];
 
 vinhos.splice(index,1);
 
-localStorage.setItem("CaveMalta", JSON.stringify(vinhos));
+localStorage.setItem("CaveMalta",JSON.stringify(vinhos));
 
 mostrarVinhos();
 
