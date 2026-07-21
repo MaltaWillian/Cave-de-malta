@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -35,8 +37,8 @@ color:#d4af37;
 .frase{
 text-align:center;
 color:#c9b8a0;
-margin-bottom:25px;
 font-style:italic;
+margin-bottom:25px;
 }
 
 h2{
@@ -51,6 +53,7 @@ font-weight:bold;
 }
 
 input,select,textarea{
+
 width:100%;
 padding:13px;
 margin:8px 0 15px;
@@ -59,6 +62,7 @@ border:1px solid #6b1e2b;
 background:#2a2023;
 color:white;
 box-sizing:border-box;
+
 }
 
 textarea{
@@ -66,6 +70,7 @@ height:90px;
 }
 
 button{
+
 width:100%;
 padding:15px;
 background:#6b1e2b;
@@ -75,75 +80,120 @@ border-radius:14px;
 font-size:17px;
 font-weight:bold;
 margin-top:10px;
+
 }
 
 .card{
+
 background:#261b1f;
 margin-top:25px;
 padding:18px;
 border-radius:18px;
 border:1px solid #d4af37;
+
 }
 
 .card img{
+
 width:100%;
 border-radius:12px;
+
 }
 
 .nota{
+
 font-size:28px;
 color:#d4af37;
 text-align:center;
+
 }
 
 .compartilhar{
+
 background:#2d6a4f;
+
 }
 
 .excluir{
+
 background:#444;
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
+
 <div class="container">
+
 
 <div class="logo">
 🍷 Cave de Malta
 </div>
 
+
 <div class="frase">
-Minha adega digital e avaliação de vinhos
+Minha jornada pelo mundo dos vinhos
 </div>
+
 
 <h2>Cadastro do vinho</h2>
 
+
 <label>Nome do vinho</label>
-<input id="nome">
+<input id="nome" placeholder="Ex: Malbec Reserva">
+
 
 <label>Vinícola</label>
-<input id="vinicola">
+<input id="vinicola" placeholder="Nome da vinícola">
 
-<label>Tipo</label>
+
+<label>Tipo de vinho</label>
+
 <select id="tipo">
+
 <option>Tinto</option>
 <option>Branco</option>
 <option>Rosé</option>
 <option>Espumante</option>
+
 </select>
 
+
 <label>Uva</label>
-<input id="uva">
+<input id="uva" placeholder="Ex: Cabernet Sauvignon">
+
 
 <label>Safra</label>
-<input id="safra">
+<input id="safra" placeholder="Ex: 2020">
 
-<label>País / Região</label>
-<input id="regiao">
+
+<label>País</label>
+
+<select id="pais">
+
+<option value="🇧🇷 Brasil">🇧🇷 Brasil</option>
+<option value="🇦🇷 Argentina">🇦🇷 Argentina</option>
+<option value="🇨🇱 Chile">🇨🇱 Chile</option>
+<option value="🇺🇾 Uruguai">🇺🇾 Uruguai</option>
+<option value="🇫🇷 França">🇫🇷 França</option>
+<option value="🇮🇹 Itália">🇮🇹 Itália</option>
+<option value="🇵🇹 Portugal">🇵🇹 Portugal</option>
+<option value="🇪🇸 Espanha">🇪🇸 Espanha</option>
+<option value="🇩🇪 Alemanha">🇩🇪 Alemanha</option>
+<option value="🇺🇸 Estados Unidos">🇺🇸 Estados Unidos</option>
+<option value="🇦🇺 Austrália">🇦🇺 Austrália</option>
+
+</select>
+
+
+<label>Região</label>
+<input id="regiao" placeholder="Ex: Serra Gaúcha">
+
 
 <label>Foto do rótulo</label>
 <input id="foto" type="file" accept="image/*">
@@ -155,18 +205,11 @@ Minha adega digital e avaliação de vinhos
 <input id="valor" placeholder="R$">
 
 
-<label>Quantidade de garrafas</label>
-<input id="quantidade" type="number">
-
-
-<label>Local na adega</label>
-<input id="local" placeholder="Ex: Prateleira 1">
-
-
-<h2>Avaliação Visual 👁</h2>
+<h2>Avaliação visual 👁</h2>
 
 <label>Cor</label>
 <input id="cor" placeholder="Ex: Rubi intenso">
+
 
 <label>Intensidade</label>
 <input id="visual" placeholder="Ex: Brilhante">
@@ -175,42 +218,71 @@ Minha adega digital e avaliação de vinhos
 <h2>Aromas 👃</h2>
 
 <label>Frutas</label>
-<input id="frutas">
+<input id="frutas" placeholder="Ex: Frutas vermelhas">
+
 
 <label>Flores</label>
-<input id="flores">
+<input id="flores" placeholder="Ex: Violetas">
+
 
 <label>Especiarias</label>
-<input id="especiarias">
+<input id="especiarias" placeholder="Ex: Pimenta, baunilha">
+
 
 <label>Madeira</label>
-<input id="madeira">
+<input id="madeira" placeholder="Ex: Carvalho">
+
 
 <label>Minerais</label>
-<input id="minerais">
+<input id="minerais" placeholder="Ex: Grafite">
 
 
-<h2>Gustativo 👅</h2>
+<h2>Paladar 👅</h2>
 
 <label>Corpo</label>
-<input id="corpo">
+<select id="corpo">
+<option>Leve</option>
+<option>Médio</option>
+<option>Encorpado</option>
+</select>
+
 
 <label>Acidez</label>
-<input id="acidez">
+<select id="acidez">
+<option>Baixa</option>
+<option>Equilibrada</option>
+<option>Alta</option>
+</select>
+
 
 <label>Taninos</label>
-<input id="tanino">
+<select id="tanino">
+<option>Suaves</option>
+<option>Presentes</option>
+<option>Intensos</option>
+</select>
+
 
 <label>Final</label>
-<input id="final">
+<select id="final">
+<option>Curto</option>
+<option>Médio</option>
+<option>Longo</option>
+</select>
 
 
 <label>Nota final (0 a 100)</label>
-<input id="notaFinal" type="number" min="0" max="100">
+<input id="notaFinal" type="number" min="0" max="100" placeholder="Ex: 92">
 
 
 <label>Harmonização 🍽</label>
-<textarea id="harmonizacao"></textarea>
+<textarea id="harmonizacao" placeholder="Carnes, massas, queijos..."></textarea>
+
+
+<h2>Quem avaliou?</h2>
+
+<label>Nome do avaliador</label>
+<input id="avaliador" placeholder="Digite seu nome">
 
 
 <button onclick="salvarVinho()">
@@ -220,10 +292,12 @@ Salvar avaliação 🍷
 
 <div id="lista"></div>
 
+
 </div>
 <script>
 
 let imagemBase64 = "";
+
 
 document.getElementById("foto").addEventListener("change", function(e){
 
@@ -246,61 +320,72 @@ leitor.readAsDataURL(arquivo);
 });
 
 
+
 function salvarVinho(){
 
-let vinho={
 
-nome:document.getElementById("nome").value,
-vinicola:document.getElementById("vinicola").value,
-tipo:document.getElementById("tipo").value,
-uva:document.getElementById("uva").value,
-safra:document.getElementById("safra").value,
-regiao:document.getElementById("regiao").value,
+let vinho = {
 
-alcool:document.getElementById("alcool").value,
-valor:document.getElementById("valor").value,
-quantidade:document.getElementById("quantidade").value,
-local:document.getElementById("local").value,
+nome:nome.value,
+vinicola:vinicola.value,
+tipo:tipo.value,
+uva:uva.value,
+safra:safra.value,
+
+pais:pais.value,
+regiao:regiao.value,
+
+alcool:alcool.value,
+valor:valor.value,
 
 foto:imagemBase64,
 
-cor:document.getElementById("cor").value,
-visual:document.getElementById("visual").value,
+cor:cor.value,
+visual:visual.value,
 
-frutas:document.getElementById("frutas").value,
-flores:document.getElementById("flores").value,
-especiarias:document.getElementById("especiarias").value,
-madeira:document.getElementById("madeira").value,
-minerais:document.getElementById("minerais").value,
+frutas:frutas.value,
+flores:flores.value,
+especiarias:especiarias.value,
+madeira:madeira.value,
+minerais:minerais.value,
 
-corpo:document.getElementById("corpo").value,
-acidez:document.getElementById("acidez").value,
-tanino:document.getElementById("tanino").value,
-final:document.getElementById("final").value,
+corpo:corpo.value,
+acidez:acidez.value,
+tanino:tanino.value,
+final:final.value,
 
-notaFinal:document.getElementById("notaFinal").value,
+notaFinal:notaFinal.value,
 
-harmonizacao:document.getElementById("harmonizacao").value
+harmonizacao:harmonizacao.value,
+
+avaliador:avaliador.value
 
 };
 
 
-let vinhos=JSON.parse(localStorage.getItem("CaveMalta")) || [];
+
+let vinhos = JSON.parse(localStorage.getItem("CaveMalta")) || [];
+
 
 vinhos.push(vinho);
 
-localStorage.setItem("CaveMalta",JSON.stringify(vinhos));
+
+localStorage.setItem("CaveMalta", JSON.stringify(vinhos));
 
 
 alert("Vinho salvo na Cave de Malta 🍷");
 
+
 mostrarVinhos();
+
 
 }
 
 
 
+
 function mostrarVinhos(){
+
 
 let lista=document.getElementById("lista");
 
@@ -312,29 +397,36 @@ let vinhos=JSON.parse(localStorage.getItem("CaveMalta")) || [];
 
 vinhos.forEach((v,index)=>{
 
-lista.innerHTML +=`
+
+lista.innerHTML += `
 
 <div class="card">
 
+
 ${v.foto ? `<img src="${v.foto}">` : ""}
+
 
 <h2>${v.nome}</h2>
 
-<p><b>Vinícola:</b> ${v.vinicola}</p>
 
-<p><b>${v.tipo}</b> | ${v.uva}</p>
+<p>
+<b>${v.pais}</b> - ${v.regiao}
+</p>
 
-<p><b>Safra:</b> ${v.safra}</p>
 
-<p>${v.regiao}</p>
+<p>
+${v.tipo} | ${v.uva} | Safra ${v.safra}
+</p>
+
 
 <div class="nota">
 ⭐ ${v.notaFinal}/100
 </div>
 
+
 <p>
 <b>Aromas:</b><br>
-${v.frutas} ${v.flores} ${v.especiarias}
+${v.frutas}, ${v.flores}, ${v.especiarias}, ${v.madeira}
 </p>
 
 
@@ -354,7 +446,7 @@ ${v.harmonizacao}
 
 
 <p>
-🍷 <b>Avaliado por: Willian Malta</b>
+🍷 <b>Avaliado por: ${v.avaliador}</b>
 </p>
 
 
@@ -374,23 +466,31 @@ Excluir
 
 });
 
+
 }
+
 
 
 
 function compartilhar(index){
 
+
 let vinhos=JSON.parse(localStorage.getItem("CaveMalta")) || [];
+
 
 let v=vinhos[index];
 
 
-let texto=
+let texto =
 
 `🍷 Cave de Malta
 
 ${v.nome}
-Vinícola: ${v.vinicola}
+
+${v.pais} - ${v.regiao}
+
+${v.tipo}
+Uva: ${v.uva}
 Safra: ${v.safra}
 
 ⭐ Nota: ${v.notaFinal}/100
@@ -401,7 +501,8 @@ ${v.frutas}, ${v.flores}, ${v.especiarias}
 Harmonização:
 ${v.harmonizacao}
 
-Avaliado por: Willian Malta`;
+🍷 Avaliado por: ${v.avaliador}`;
+
 
 
 if(navigator.share){
@@ -420,21 +521,29 @@ alert(texto);
 
 }
 
+
 }
+
 
 
 
 function excluirVinho(index){
 
+
 let vinhos=JSON.parse(localStorage.getItem("CaveMalta")) || [];
+
 
 vinhos.splice(index,1);
 
-localStorage.setItem("CaveMalta",JSON.stringify(vinhos));
+
+localStorage.setItem("CaveMalta", JSON.stringify(vinhos));
+
 
 mostrarVinhos();
 
+
 }
+
 
 
 mostrarVinhos();
@@ -442,5 +551,7 @@ mostrarVinhos();
 
 </script>
 
+
 </body>
+
 </html>
