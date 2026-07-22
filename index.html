@@ -19,52 +19,38 @@ color:white;
 }
 
 .container{
-
 max-width:460px;
 margin:auto;
 background:#1d1518;
 padding:22px;
 border-radius:25px;
 box-shadow:0 0 25px rgba(212,175,55,.25);
-
 }
 
 .logo{
-
 text-align:center;
 font-size:34px;
 font-weight:bold;
 color:#d4af37;
-
 }
 
-
 .frase{
-
 text-align:center;
 color:#c9b8a0;
 font-style:italic;
 margin-bottom:25px;
-
 }
 
-
 h2{
-
 color:#d4af37;
 border-bottom:1px solid #6b1e2b;
 padding-bottom:8px;
-
 }
-
 
 label{
-
 color:#d4af37;
 font-weight:bold;
-
 }
-
 
 input,select,textarea{
 
@@ -79,13 +65,9 @@ box-sizing:border-box;
 
 }
 
-
 textarea{
-
 height:90px;
-
 }
-
 
 button{
 
@@ -101,7 +83,6 @@ margin-top:10px;
 
 }
 
-
 .card{
 
 background:#261b1f;
@@ -112,14 +93,12 @@ border:1px solid #d4af37;
 
 }
 
-
 .card img{
 
 width:100%;
 border-radius:12px;
 
 }
-
 
 .nota{
 
@@ -129,20 +108,17 @@ text-align:center;
 
 }
 
-
 .compartilhar{
 
 background:#2d6a4f;
 
 }
 
-
 .excluir{
 
 background:#444;
 
 }
-
 
 </style>
 
@@ -156,16 +132,12 @@ background:#444;
 
 
 <div class="logo">
-
 🍷 Cave de Malta
-
 </div>
 
 
 <div class="frase">
-
 Minha jornada pelo mundo dos vinhos
-
 </div>
 
 
@@ -173,12 +145,10 @@ Minha jornada pelo mundo dos vinhos
 
 
 <label>Nome do vinho</label>
-
 <input id="nome" placeholder="Ex: Malbec Reserva">
 
 
 <label>Vinícola</label>
-
 <input id="vinicola" placeholder="Nome da vinícola">
 
 
@@ -195,12 +165,10 @@ Minha jornada pelo mundo dos vinhos
 
 
 <label>Uva</label>
-
 <input id="uva" placeholder="Ex: Cabernet Sauvignon">
 
 
 <label>Safra</label>
-
 <input id="safra" placeholder="Ex: 2020">
 
 
@@ -216,67 +184,53 @@ Minha jornada pelo mundo dos vinhos
 <option value="🇮🇹 Itália">🇮🇹 Itália</option>
 <option value="🇵🇹 Portugal">🇵🇹 Portugal</option>
 <option value="🇪🇸 Espanha">🇪🇸 Espanha</option>
-<option value="🇺🇸 Estados Unidos">🇺🇸 Estados Unidos</option>
 
 </select>
 
 
 <label>Região</label>
-
 <input id="regiao" placeholder="Ex: Serra Gaúcha">
 
 
 <label>Foto do rótulo</label>
-
 <input id="foto" type="file" accept="image/*">
 
 
 <label>Teor alcoólico</label>
-
 <input id="alcool" placeholder="Ex: 13,5%">
 
 
 <label>Valor pago</label>
-
 <input id="valor" placeholder="R$">
 <h2>Avaliação visual 👁</h2>
 
 <label>Cor</label>
-
 <input id="cor" placeholder="Ex: Rubi intenso">
 
 
 <label>Intensidade</label>
-
 <input id="visual" placeholder="Ex: Brilhante">
-
 
 
 <h2>Aromas 👃</h2>
 
-
 <label>Frutas</label>
-
 <input id="frutas" placeholder="Ex: Frutas vermelhas">
 
 
 <label>Flores</label>
-
 <input id="flores" placeholder="Ex: Violetas">
 
 
 <label>Especiarias</label>
-
 <input id="especiarias" placeholder="Ex: Pimenta, baunilha">
 
 
 <label>Madeira</label>
-
 <input id="madeira" placeholder="Ex: Carvalho">
 
 
 <label>Minerais</label>
-
 <input id="minerais" placeholder="Ex: Grafite">
 
 
@@ -360,7 +314,6 @@ Salvar avaliação 🍷
 </button>
 
 
-
 <div id="lista"></div>
 
 
@@ -370,16 +323,19 @@ Salvar avaliação 🍷
 let imagemBase64 = "";
 
 
-// ============================
-// REDUZ E SALVA A FOTO
-// ============================
+// ===============================
+// REDUZIR FOTO ANTES DE SALVAR
+// ===============================
 
 document.getElementById("foto").addEventListener("change", function(e){
 
 let arquivo = e.target.files[0];
 
 
-if(arquivo){
+if(!arquivo){
+return;
+}
+
 
 let leitor = new FileReader();
 
@@ -412,9 +368,12 @@ let ctx = canvas.getContext("2d");
 ctx.drawImage(img,0,0,largura,altura);
 
 
-// imagem comprimida
 
-imagemBase64 = canvas.toDataURL("image/jpeg",0.7);
+imagemBase64 = canvas.toDataURL(
+"image/jpeg",
+0.7
+);
+
 
 
 }
@@ -426,18 +385,20 @@ img.src = event.target.result;
 }
 
 
+
 leitor.readAsDataURL(arquivo);
 
 
-}
 
 });
 
 
 
-// ============================
+
+// ===============================
 // CAMPOS VAZIOS = N/C
-// ============================
+// ===============================
+
 
 function nc(valor){
 
@@ -453,12 +414,13 @@ return valor;
 
 
 
-// ============================
+
+// ===============================
 // SALVAR VINHO
-// ============================
+// ===============================
+
 
 function salvarVinho(){
-
 
 
 let vinho = {
@@ -527,33 +489,45 @@ avaliador:nc(document.getElementById("avaliador").value)
 
 
 
-let vinhos = JSON.parse(localStorage.getItem("CaveMalta")) || [];
+let vinhos = JSON.parse(
+localStorage.getItem("CaveMalta")
+) || [];
+
 
 
 vinhos.push(vinho);
 
 
-localStorage.setItem("CaveMalta",JSON.stringify(vinhos));
+
+localStorage.setItem(
+"CaveMalta",
+JSON.stringify(vinhos)
+);
 
 
 
-alert("🍷 Vinho salvo com sucesso!");
+alert("🍷 Vinho salvo na Cave de Malta");
 
 
 
 mostrarVinhos();
 
 
+
 }
 function mostrarVinhos(){
 
 
-let lista=document.getElementById("lista");
+let lista = document.getElementById("lista");
+
 
 lista.innerHTML="";
 
 
-let vinhos=JSON.parse(localStorage.getItem("CaveMalta")) || [];
+
+let vinhos = JSON.parse(
+localStorage.getItem("CaveMalta")
+) || [];
 
 
 
@@ -575,17 +549,13 @@ ${v.foto ? `<img src="${v.foto}">` : ""}
 
 
 <p>
-
 <b>${v.pais}</b> - ${v.regiao}
-
 </p>
 
 
 
 <p>
-
 ${v.tipo} | ${v.uva} | Safra ${v.safra}
-
 </p>
 
 
@@ -598,6 +568,7 @@ ${v.tipo} | ${v.uva} | Safra ${v.safra}
 
 
 
+
 <p>
 
 <b>Aromas:</b><br>
@@ -605,6 +576,7 @@ ${v.tipo} | ${v.uva} | Safra ${v.safra}
 ${v.frutas}, ${v.flores}, ${v.especiarias}, ${v.madeira}
 
 </p>
+
 
 
 
@@ -624,6 +596,7 @@ Final: ${v.final}
 
 
 
+
 <p>
 
 <b>Harmonização:</b><br>
@@ -631,6 +604,7 @@ Final: ${v.final}
 ${v.harmonizacao}
 
 </p>
+
 
 
 
@@ -647,6 +621,7 @@ ${v.harmonizacao}
 Compartilhar ficha 📲
 
 </button>
+
 
 
 
@@ -668,18 +643,15 @@ Excluir
 
 
 }
-
-
-
-
-
 function compartilhar(index){
 
 
-let vinhos=JSON.parse(localStorage.getItem("CaveMalta")) || [];
+let vinhos = JSON.parse(
+localStorage.getItem("CaveMalta")
+) || [];
 
 
-let v=vinhos[index];
+let v = vinhos[index];
 
 
 
@@ -718,6 +690,78 @@ ${v.harmonizacao}
 
 
 
+
+// Compartilha foto junto quando existir
+
+if(v.foto){
+
+
+
+let partes = v.foto.split(",");
+
+
+let tipo = partes[0]
+.match(/:(.*?);/)[1];
+
+
+let binario = atob(partes[1]);
+
+
+let tamanho = binario.length;
+
+
+let bytes = new Uint8Array(tamanho);
+
+
+
+for(let i=0;i<tamanho;i++){
+
+bytes[i] = binario.charCodeAt(i);
+
+}
+
+
+
+let arquivo = new File(
+
+[bytes],
+
+"rotulo-vinho.jpg",
+
+{type:tipo}
+
+);
+
+
+
+
+if(navigator.canShare && navigator.canShare({files:[arquivo]})){
+
+
+
+navigator.share({
+
+title:"Cave de Malta",
+
+text:texto,
+
+files:[arquivo]
+
+});
+
+
+return;
+
+
+}
+
+
+}
+
+
+
+// Caso não tenha foto
+
 if(navigator.share){
 
 
@@ -740,28 +784,42 @@ alert(texto);
 
 
 }
+
+
+
+
+
 function excluirVinho(index){
 
 
-let vinhos = JSON.parse(localStorage.getItem("CaveMalta")) || [];
+
+let vinhos = JSON.parse(
+localStorage.getItem("CaveMalta")
+) || [];
+
 
 
 vinhos.splice(index,1);
 
 
-localStorage.setItem("CaveMalta",JSON.stringify(vinhos));
+
+localStorage.setItem(
+
+"CaveMalta",
+
+JSON.stringify(vinhos)
+
+);
+
 
 
 mostrarVinhos();
 
 
 }
-
-
-
-// ============================
-// LIMPAR FORMULÁRIO APÓS SALVAR
-// ============================
+// ===============================
+// LIMPAR FORMULÁRIO
+// ===============================
 
 function limparFormulario(){
 
@@ -779,11 +837,13 @@ campo.value="";
 });
 
 
+
 document.querySelectorAll("textarea").forEach(campo=>{
 
 campo.value="";
 
 });
+
 
 
 imagemBase64="";
@@ -796,9 +856,9 @@ document.getElementById("foto").value="";
 
 
 
-// ============================
-// CARREGAR VINHOS AO ABRIR
-// ============================
+// ===============================
+// CARREGAR AO ABRIR
+// ===============================
 
 mostrarVinhos();
 
