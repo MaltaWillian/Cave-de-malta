@@ -184,9 +184,6 @@ Minha jornada pelo mundo dos vinhos
 <option value="🇮🇹 Itália">🇮🇹 Itália</option>
 <option value="🇵🇹 Portugal">🇵🇹 Portugal</option>
 <option value="🇪🇸 Espanha">🇪🇸 Espanha</option>
-<option value="🇩🇪 Alemanha">🇩🇪 Alemanha</option>
-<option value="🇺🇸 Estados Unidos">🇺🇸 Estados Unidos</option>
-<option value="🇦🇺 Austrália">🇦🇺 Austrália</option>
 
 </select>
 
@@ -197,14 +194,14 @@ Minha jornada pelo mundo dos vinhos
 
 <label>Foto do rótulo</label>
 <input id="foto" type="file" accept="image/*">
+
+
 <label>Teor alcoólico</label>
 <input id="alcool" placeholder="Ex: 13,5%">
 
 
 <label>Valor pago</label>
 <input id="valor" placeholder="R$">
-
-
 <h2>Avaliação visual 👁</h2>
 
 <label>Cor</label>
@@ -216,6 +213,7 @@ Minha jornada pelo mundo dos vinhos
 
 
 <h2>Aromas 👃</h2>
+
 
 <label>Frutas</label>
 <input id="frutas" placeholder="Ex: Frutas vermelhas">
@@ -239,35 +237,44 @@ Minha jornada pelo mundo dos vinhos
 
 <h2>Paladar 👅</h2>
 
+
 <label>Corpo</label>
 <select id="corpo">
+
 <option>Leve</option>
 <option>Médio</option>
 <option>Encorpado</option>
+
 </select>
 
 
 <label>Acidez</label>
 <select id="acidez">
+
 <option>Baixa</option>
 <option>Equilibrada</option>
 <option>Alta</option>
+
 </select>
 
 
 <label>Taninos</label>
 <select id="tanino">
+
 <option>Suaves</option>
 <option>Presentes</option>
 <option>Intensos</option>
+
 </select>
 
 
 <label>Final</label>
 <select id="final">
+
 <option>Curto</option>
 <option>Médio</option>
 <option>Longo</option>
+
 </select>
 
 
@@ -280,6 +287,7 @@ Minha jornada pelo mundo dos vinhos
 
 
 <h2>Quem avaliou?</h2>
+
 
 <label>Nome do avaliador</label>
 <input id="avaliador" placeholder="Digite seu nome">
@@ -299,6 +307,7 @@ Salvar avaliação 🍷
 let imagemBase64 = "";
 
 
+// Conversão da foto para salvar
 document.getElementById("foto").addEventListener("change", function(e){
 
 let arquivo = e.target.files[0];
@@ -320,45 +329,84 @@ leitor.readAsDataURL(arquivo);
 });
 
 
+// Salva campos vazios como N/C
+function nc(valor){
+
+if(valor == "" || valor == null){
+
+return "N/C";
+
+}
+
+return valor;
+
+}
+
+
 
 function salvarVinho(){
 
 
 let vinho = {
 
-nome:nome.value,
-vinicola:vinicola.value,
-tipo:tipo.value,
-uva:uva.value,
-safra:safra.value,
 
-pais:pais.value,
-regiao:regiao.value,
+nome: nc(document.getElementById("nome").value),
 
-alcool:alcool.value,
-valor:valor.value,
+vinicola: nc(document.getElementById("vinicola").value),
 
-foto:imagemBase64,
+tipo: nc(document.getElementById("tipo").value),
 
-cor:cor.value,
-visual:visual.value,
+uva: nc(document.getElementById("uva").value),
 
-frutas:frutas.value,
-flores:flores.value,
-especiarias:especiarias.value,
-madeira:madeira.value,
-minerais:minerais.value,
+safra: nc(document.getElementById("safra").value),
 
-corpo:corpo.value,
-acidez:acidez.value,
-tanino:tanino.value,
-final:final.value,
 
-notaFinal:notaFinal.value,
+pais: nc(document.getElementById("pais").value),
 
-harmonizacao:harmonizacao.value,
+regiao: nc(document.getElementById("regiao").value),
 
-avaliador:avaliador.value
+
+alcool: nc(document.getElementById("alcool").value),
+
+valor: nc(document.getElementById("valor").value),
+
+
+foto: imagemBase64,
+
+
+cor: nc(document.getElementById("cor").value),
+
+visual: nc(document.getElementById("visual").value),
+
+
+frutas: nc(document.getElementById("frutas").value),
+
+flores: nc(document.getElementById("flores").value),
+
+especiarias: nc(document.getElementById("especiarias").value),
+
+madeira: nc(document.getElementById("madeira").value),
+
+minerais: nc(document.getElementById("minerais").value),
+
+
+corpo: nc(document.getElementById("corpo").value),
+
+acidez: nc(document.getElementById("acidez").value),
+
+tanino: nc(document.getElementById("tanino").value),
+
+final: nc(document.getElementById("final").value),
+
+
+notaFinal: nc(document.getElementById("notaFinal").value),
+
+
+harmonizacao: nc(document.getElementById("harmonizacao").value),
+
+
+avaliador: nc(document.getElementById("avaliador").value)
+
 
 };
 
@@ -380,19 +428,15 @@ mostrarVinhos();
 
 
 }
-
-
-
-
 function mostrarVinhos(){
 
 
-let lista=document.getElementById("lista");
+let lista = document.getElementById("lista");
 
-lista.innerHTML="";
+lista.innerHTML = "";
 
 
-let vinhos=JSON.parse(localStorage.getItem("CaveMalta")) || [];
+let vinhos = JSON.parse(localStorage.getItem("CaveMalta")) || [];
 
 
 vinhos.forEach((v,index)=>{
@@ -432,16 +476,23 @@ ${v.frutas}, ${v.flores}, ${v.especiarias}, ${v.madeira}
 
 <p>
 <b>Paladar:</b><br>
+
 Corpo: ${v.corpo}<br>
+
 Acidez: ${v.acidez}<br>
+
 Taninos: ${v.tanino}<br>
+
 Final: ${v.final}
+
 </p>
 
 
 <p>
 <b>Harmonização:</b><br>
+
 ${v.harmonizacao}
+
 </p>
 
 
@@ -450,14 +501,21 @@ ${v.harmonizacao}
 </p>
 
 
+
 <button class="compartilhar" onclick="compartilhar(${index})">
+
 Compartilhar ficha 📲
+
 </button>
+
 
 
 <button class="excluir" onclick="excluirVinho(${index})">
+
 Excluir
+
 </button>
+
 
 
 </div>
@@ -472,40 +530,53 @@ Excluir
 
 
 
+
 function compartilhar(index){
 
 
-let vinhos=JSON.parse(localStorage.getItem("CaveMalta")) || [];
+let vinhos = JSON.parse(localStorage.getItem("CaveMalta")) || [];
 
 
-let v=vinhos[index];
+let v = vinhos[index];
 
 
 let texto =
 
 `🍷 Cave de Malta
 
+
 ${v.nome}
+
 
 ${v.pais} - ${v.regiao}
 
+
 ${v.tipo}
+
 Uva: ${v.uva}
+
 Safra: ${v.safra}
+
 
 ⭐ Nota: ${v.notaFinal}/100
 
+
 Aromas:
+
 ${v.frutas}, ${v.flores}, ${v.especiarias}
 
+
 Harmonização:
+
 ${v.harmonizacao}
+
 
 🍷 Avaliado por: ${v.avaliador}`;
 
 
 
 if(navigator.share){
+
 
 navigator.share({
 
@@ -515,14 +586,18 @@ text:texto
 
 });
 
+
 }else{
+
 
 alert(texto);
 
+
 }
 
 
 }
+
 
 
 
@@ -530,7 +605,7 @@ alert(texto);
 function excluirVinho(index){
 
 
-let vinhos=JSON.parse(localStorage.getItem("CaveMalta")) || [];
+let vinhos = JSON.parse(localStorage.getItem("CaveMalta")) || [];
 
 
 vinhos.splice(index,1);
@@ -546,11 +621,18 @@ mostrarVinhos();
 
 
 
+
 mostrarVinhos();
+
 
 
 </script>
 
+
+</body>
+
+</html>
+</script>
 
 </body>
 
